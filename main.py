@@ -43,6 +43,8 @@ def main(argv):
         raise SystemExit(
             "entry is %d characters, over the %d limit" % (len(text), LIMIT)
         )
+    if "\n" in text or "\r" in text:
+        raise SystemExit("entry must be a single line")
     target = destination(argv)
     parent = os.path.dirname(target)
     if parent:
